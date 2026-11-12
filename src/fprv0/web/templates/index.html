@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }} — tableau de bord</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/gridstack.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <h1 id="app-title">{{ app_name }}</h1>
+        <span id="sim-tag" class="tag" hidden>Simulation</span>
+        <span id="global-status" class="global-status" data-level="unknown" role="status">Connexion au serveur…</span>
+    </header>
+
+    <main>
+        <div id="grid" class="grid-stack" aria-live="off"></div>
+
+        <section class="journal-card" aria-label="Journal">
+            <h2>Journal</h2>
+            <ol id="journal" class="journal"></ol>
+        </section>
+    </main>
+
+    <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+
+    <dialog id="confirm-dialog">
+        <form method="dialog">
+            <p id="confirm-msg"></p>
+            <div class="dialog-actions">
+                <button value="cancel" class="btn" autofocus>Annuler</button>
+                <button value="ok" class="btn btn-danger-solid" id="confirm-ok">Confirmer</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="token-dialog">
+        <form method="dialog">
+            <p>Cette action demande le jeton d'API du serveur.</p>
+            <label class="field">Jeton d'API
+                <input id="token-input" type="password" autocomplete="off" spellcheck="false">
+            </label>
+            <div class="dialog-actions">
+                <button value="cancel" class="btn">Annuler</button>
+                <button value="ok" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="{{ url_for('static', filename='vendor/chart.umd.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/gridstack-all.js') }}"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

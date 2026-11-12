@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fprv0"
+version = "0.3.0"
+description = "Plateforme de pilotage d'expérience scientifique et d'acquisition de données - fprv0"
+readme = "README.md"
+requires-python = ">=3.11"   # tomllib (lecture TOML) est dans la bibliothèque standard à partir de 3.11
+dependencies = [
+    "flask>=3.0.0",
+    "httpx>=0.24.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+# Transports prévus mais sans driver livré pour l'instant.
+visa = ["pyvisa>=1.13.0", "pyvisa-py>=0.7.0"]
+serial = ["pyserial>=3.5"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.scripts]
+fprv0 = "fprv0.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"fprv0.web" = ["templates/*.html", "static/*", "static/vendor/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]

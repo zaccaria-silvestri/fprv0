@@ -1,0 +1,3 @@
+Chart.js 4.4.7        (MIT)  https://www.chartjs.org      - chart.umd.js
+GridStack 10.3.1      (MIT)  https://gridstackjs.com      - gridstack-all.js, gridstack.min.css
+Fichiers copiés tels quels depuis les paquets npm (sans la ligne sourceMappingURL) pour fonctionner hors ligne.

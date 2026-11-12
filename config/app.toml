@@ -1,0 +1,29 @@
+[app]
+name = "fprv0"
+
+# true : tous les instruments utilisent leur simulateur, quel que soit leur "transport".
+# Surchargeable en ligne de commande avec --sim / --no-sim.
+simulation_mode = false
+
+# Par défaut le serveur n'écoute que sur la machine locale.
+# Pour l'ouvrir au réseau (ex. "0.0.0.0"), un api_token est OBLIGATOIRE.
+web_host = "127.0.0.1"
+web_port = 5000
+
+# Jeton exigé par POST /api/action (en-tête X-API-Token). Peut aussi venir de la variable
+# d'environnement FPRV0_API_TOKEN, qui est prioritaire. Ne le commitez pas dans git.
+# api_token = "changez-moi"
+
+data_dir = "data"
+save_csv = true
+
+# Nombre de points gardés en mémoire par instrument (relecture des graphiques après un F5).
+history_points = 3600
+
+# --- Base de données historique (SQLite) -------------------------------------------------
+# Une moyenne par instrument et par période est enregistrée (les CSV restent la trace brute),
+# ainsi que le journal et l'audit des commandes (qui a fait quoi, depuis quelle adresse).
+history_db = true
+db_file = "history.db"          # dans data_dir
+db_period_s = 60
+db_retention_days = 90          # purge des moyennes et du journal au-delà

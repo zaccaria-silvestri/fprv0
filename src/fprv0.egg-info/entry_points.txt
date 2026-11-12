@@ -1,0 +1,2 @@
+[console_scripts]
+fprv0 = fprv0.__main__:main

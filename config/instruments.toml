@@ -1,0 +1,26 @@
+# Un bloc par instrument. L'identifiant (ex. eip_counter) sert d'URL, de nom de fichier CSV
+# et d'identifiant dans l'API : lettres, chiffres, "_" et "-" uniquement.
+#
+# transport : "http" (matériel réel) ou "sim" (simulateur intégré)
+# Champs optionnels : label, timeout_s (3.0), retry_min_s (1.0), retry_max_s (30.0), max_failures (3)
+
+[eip_counter]
+type = "eip_25b"
+transport = "http"
+address = "http://192.168.0.103/api"
+poll_interval_s = 1.0
+enabled = true
+
+[keithley_multimeter]
+type = "keithley_2000"
+transport = "http"
+address = "http://192.168.0.102/api"
+poll_interval_s = 1.0
+enabled = true
+
+[swagelok_valves]
+type = "swagelok_dp"
+transport = "http"
+address = "http://192.168.0.213/api/status"
+poll_interval_s = 0.5
+enabled = true
